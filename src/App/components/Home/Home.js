@@ -14,13 +14,19 @@ class Home extends Component {
             dayRemaining:" ??? "
         }
 
+        
+    // je initalise mon state
      componentDidMount(){
         const { user_Action  } = this.props
         const { id = 2 } = this.props.match.params
-            user_Action(id)  
+
+        //function qui permet de faire un appel d'api en GET pour recuperer les info de l'utilisateur
+        user_Action(id)  
    
     }
 
+
+    // je recupere la mise à jour des données e l'utilisateur en props via redux
     componentDidUpdate(prevProps){
          const { first_name , last_name ,birthday = "1993-10-16"} = this.props.info_User
        
@@ -44,7 +50,7 @@ class Home extends Component {
  
     }
 
-    
+    //function pour calculer le nombre d ejour restant avant la date anniversaire #par default date annif 1993-10-16
     dateBirdthday =( birthday)=>{
  
         let split = birthday.split('-')
@@ -63,8 +69,7 @@ class Home extends Component {
     render() {
 
         const { firstName , lastName , dayRemaining} =this.state
-        console.log("🚀 ~ file: Home.js ~ line 68 ~ Home ~ render ~ firstName", firstName)
-        
+ 
         return(
             <div className="Acceuil">
                 <header className="Acceuil-header ">

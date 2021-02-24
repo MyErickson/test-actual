@@ -13,17 +13,17 @@ class Information extends Component {
         message:false
     }
 
+    //function qui est appelée a chaque changment d'un input. Il change les valeur du state
     handleChangeState=(event)=>{
      
         const { name , value } = event.target
-        console.log("🚀 ~ file: Informations.js ~ line 19 ~ Information ~  value",  value)
  
         this.setState({
             [name]:value
-        })
-        
+        }) 
     }
 
+    //function qui est appelée apres chaque touch du keybord
     handleSubmit=(event)=>{
        const { information_Action } = this.props
        const { firstName ,lastName , birthdayState , id } = this.state
@@ -34,8 +34,8 @@ class Information extends Component {
        data.birthday = birthdayState
        data.id = id
 
+       // si l'utilsateur press la touche "enter"
         if(event.keyCode === 13){
-        console.log("🚀 ~ file: Informations.js ~ line 38 ~ Information ~ event.keyCode ", event.keyCode )
 
             information_Action(data)
             this.setState({
