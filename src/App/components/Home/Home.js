@@ -11,36 +11,42 @@ class Home extends Component {
             firstName:"",
             lastName:"",
             birthdayState:"",
-            dayRemaining:" ?? "
+            dayRemaining:" ??? "
         }
 
-    componentDidMount(){
-        const { user_Action } = this.props
+     componentDidMount(){
+        const { user_Action  } = this.props
         const { id = 2 } = this.props.match.params
-        
-        user_Action(id)        
+            user_Action(id)  
+   
     }
 
     componentDidUpdate(prevProps){
          const { first_name , last_name ,birthday = "1993-10-16"} = this.props.info_User
        
          const { firstName,lastName, birthdayState } = this.state
+
+         if( this.props?.info_User){
        
-        if(first_name !==  firstName || last_name !== lastName || birthday !== birthdayState ){
+            if(first_name !==  firstName || last_name !== lastName || birthday !== birthdayState ){
+            
+                let dayRemaining = this.dateBirdthday(birthday)
         
-            let dayRemaining = this.dateBirdthday(birthday)
-      
-            this.setState({
-                firstName:first_name,
-                lastName:last_name,
-                birthdayState:birthday,
-                dayRemaining
-            })
-        }
+                this.setState({
+                    firstName:first_name,
+                    lastName:last_name,
+                    birthdayState:birthday,
+                    dayRemaining
+                })
+            }
+
+       }
+ 
     }
 
     
     dateBirdthday =( birthday)=>{
+ 
         let split = birthday.split('-')
         split[0] = "2021"
 
@@ -57,6 +63,7 @@ class Home extends Component {
     render() {
 
         const { firstName , lastName , dayRemaining} =this.state
+        console.log("🚀 ~ file: Home.js ~ line 68 ~ Home ~ render ~ firstName", firstName)
         
         return(
             <div className="Acceuil">

@@ -3,7 +3,7 @@
  * Initial State
  */
 const initialState = {
-   info_User:undefined
+   info_User:{}
 };
 
 /**
@@ -24,9 +24,11 @@ export const  PUT_INFORMATION = "PUT_INFORMATION"
  */
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-   
+ 
     case INFO_USER:
+   
       return {
+   
         ...state,
         info_User : action.data
       }

@@ -1,32 +1,23 @@
 
 import React, { Component } from 'react';
-import { Input } from 'antd';
+import { Input, message } from 'antd';
 
 import './Informations.scss';
 
-class Home extends Component {
+class Information extends Component {
 
-        state={
-            firstName:"",
-            birthday:"",
-            lastName:"",
-            lockRequest:false,
-            id:undefined
-
-        }
-
-        componentDidMount(){
-            const { id = 2 } = this.props.match.params
-            
-            this.setState({
-                id
-            })        
-        }
-
+     state={
+        firstName:"",
+        birthdayState:"",
+        lastName:"",
+        message:false
+    }
 
     handleChangeState=(event)=>{
      
         const { name , value } = event.target
+        console.log("🚀 ~ file: Informations.js ~ line 19 ~ Information ~  value",  value)
+ 
         this.setState({
             [name]:value
         })
@@ -35,44 +26,69 @@ class Home extends Component {
 
     handleSubmit=(event)=>{
        const { information_Action } = this.props
-       const { firstName ,lastName , birthday , id } = this.state
+       const { firstName ,lastName , birthdayState , id } = this.state
 
        const data = {}
-       data.first_Name = firstName
-       data.last_Name = lastName
-       data.birthday = birthday
+       data.first_name = firstName
+       data.last_name = lastName
+       data.birthday = birthdayState
        data.id = id
 
         if(event.keyCode === 13){
-       
-            console.log("envoyer")
+        console.log("🚀 ~ file: Informations.js ~ line 38 ~ Information ~ event.keyCode ", event.keyCode )
+
             information_Action(data)
+            this.setState({
+                message:true
+            })
+
+            setTimeout(()=>{
+                this.setState({
+                    message:false
+                })
+            },6000)
         }
     }
 
     render() {
 
-        const { firstName , birthday , lastName} =this.state
+        const { firstName ,  lastName ,message} =this.state
         
         return(
             <div className="Information">
+                <p>
+                    Appuyer sur la touche " Enter "pour valider votre modification
+                </p>
                 <form className="Information-header" onKeyDown={(e)=>{this.handleSubmit(e)}} >
-                    <Input placeholder="prénom" 
+                    <Input
+            
+                        className="Information-header-input" 
+                        placeholder="prénom" 
                         name="firstName"
                         value={firstName} 
                         onChange={(e)=>{this.handleChangeState(e)}}/>
-                    <Input placeholder="nom" 
+                    <Input 
+                        className="Information-header-input" 
+                        placeholder="nom" 
                         name="lastName"
                         value={lastName} 
                         onChange={(e)=>{this.handleChangeState(e)}}/>
-                    <Input placeholder="date de naissance" 
+                    <Input 
+                        className="Information-header-input" 
+                        placeholder="date de naissance"
+                        type ="date"
                         name="birthday"
-                        value={birthday} 
                         onChange={(e)=>{this.handleChangeState(e)}}/>
-                    
+                
+                {message && 
+                    <p>
+                        "Les données on bien etaint envoyée , mais reqres.in ne sauvegarde aucune modification en Base de données"
+                    </p>
+                }
                 </form>
+    
             </div>
         )}
 }
 
-export default Home ;
+export default  Information ;

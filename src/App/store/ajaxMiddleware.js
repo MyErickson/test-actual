@@ -26,7 +26,6 @@ const ajaxMiddleware = store => next => async (action) => {
 
     case PUT_INFORMATION :
       next(action);
-      console.log("🚀 ~ file: ajaxMiddleware.js ~ line 29 ~ ajaxMiddleware ~ action", action)
 
       let valueInfo ={}
       valueInfo.action = action
