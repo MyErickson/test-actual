@@ -11,7 +11,6 @@ export const request_Get_User= async (value)=>{
 
     try{
         const res = await axios.get(`unknown/${id}`)
-        console.log("🚀 ~ file: Home.js ~ line 14 ~ constrequest_Get_User= ~ re", res.data.data)
       
         store.dispatch(info_User_Action(res.data.data))
 
