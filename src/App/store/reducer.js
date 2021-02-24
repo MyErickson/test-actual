@@ -12,7 +12,8 @@ const initialState = {
 
 export const INFO_USER = "INFO_USER"
 export const GET_USER = "GET_USER"
-
+export const UPDATE_INFORMATION ="UPDATE_INFORMATION"
+export const  PUT_INFORMATION = "PUT_INFORMATION"
 
 /**
  * Traitements

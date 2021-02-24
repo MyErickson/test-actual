@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-import {  GET_USER } from './reducer'
+import {  GET_USER,PUT_INFORMATION } from './reducer'
 import { request_Get_User } from './request/Home'
+import { request_Put_Info } from './request/Informations'
 
 
 const ajaxMiddleware = store => next => async (action) => {
@@ -23,6 +24,17 @@ const ajaxMiddleware = store => next => async (action) => {
 
     break;
 
+    case PUT_INFORMATION :
+      next(action);
+      console.log("🚀 ~ file: ajaxMiddleware.js ~ line 29 ~ ajaxMiddleware ~ action", action)
+
+      let valueInfo ={}
+      valueInfo.action = action
+      valueInfo.store = store
+
+      await request_Put_Info(valueInfo)
+    
+    break;
    
     default:
       next(action);
