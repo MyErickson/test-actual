@@ -24,11 +24,17 @@ other:
 404 not found
 
 ## Bug Api (https://reqres.in/)
+
+The API does not provide data birthday
+
 method : 
 
-post does not allow to save in database.\ 
-put does not allow to save in database.\  
-patch does not allow to save in database .\ 
-delete does not allow to save in database .\ 
+post does not allow to save in database.
+
+put does not allow to save in database. 
+
+patch does not allow to save in database .
+
+delete does not allow to save in database .
 
 they just return our data 
