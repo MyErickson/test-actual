@@ -11,9 +11,6 @@ if (window.devToolsExtension) {
   devTools.push(window.devToolsExtension());
 }
 
-// On se crée une variable pour "composer" avec notre propre middleware
-// et celui fourni par les devTools. Les enhancers représentent TOUS les 
-// middlewares utilisés par mon app, internes, comme externes
 
 const enhancers = compose(appliedMiddlewares, ...devTools);
 

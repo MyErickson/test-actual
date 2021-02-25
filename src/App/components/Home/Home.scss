@@ -1,0 +1,34 @@
+.Acceuil {
+  text-align: center;
+
+  .Acceuil-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+
+    .Accueil-header-link { 
+      cursor: pointer;
+      text-decoration:none ;
+      color:white
+    
+      
+    }
+    .Accueil-header-link:hover { 
+      color:rgb(0, 247, 255);
+    
+    }
+
+  }
+
+
+}
+
+
+
+
+
