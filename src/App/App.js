@@ -9,8 +9,8 @@ const App = () =>{
     <div className="App">
       <header className="App-header">
       <Switch>
-        <Route exact path="/acceuil/" component={ HomeContainer } />
-        <Route exact path="/acceuil/:id" component={ HomeContainer } />
+        <Route exact path="/accueil/" component={ HomeContainer } />
+        <Route exact path="/accueil/:id" component={ HomeContainer } />
         <Route path="/informations" component={InformationContainer} />
         <Route render={() => <h1>404 Not found</h1>} />
       </Switch>
