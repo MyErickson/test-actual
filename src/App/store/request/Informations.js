@@ -14,11 +14,13 @@ export const request_Put_Info= async (value)=>{
             last_name,
             birthday
         })
+        console.log("🚀 ~ file: Informations.js ~ line 17 ~ constrequest_Put_Info= ~ res", res)
 
     
         store.dispatch(info_User_Action(res.data))
 
     }catch(err){
+    console.log("🚀 ~ file: Informations.js ~ line 23 ~ constrequest_Put_Info= ~ err", err)
  
         
         store.dispatch(info_User_Action(false))

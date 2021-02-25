@@ -28,14 +28,14 @@ class Home extends Component {
 
     // je recupere la mise à jour des données e l'utilisateur en props via redux
     componentDidUpdate(prevProps){
-         const { first_name , last_name ,birthday = "1993-10-16"} = this.props.info_User
-       
-         const { firstName,lastName, birthdayState } = this.state
 
          if( this.props?.info_User){
-       
+            const { first_name , last_name ,birthday = "1993-03-07"} = this.props.info_User
+            const { firstName,lastName, birthdayState } = this.state
+
             if(first_name !==  firstName || last_name !== lastName || birthday !== birthdayState ){
-            
+                
+              
                 let dayRemaining = this.dateBirdthday(birthday)
         
                 this.setState({
@@ -50,7 +50,7 @@ class Home extends Component {
  
     }
 
-    //function pour calculer le nombre d ejour restant avant la date anniversaire #par default date annif 1993-10-16
+    //function pour calculer le nombre d ejour restant avant la date anniversaire #par default date annif 1993-02-07
     dateBirdthday =( birthday)=>{
  
         let split = birthday.split('-')
@@ -59,8 +59,16 @@ class Home extends Component {
        let date = split.join()
        let date1  = moment(date)
        let date2  = moment().startOf('day')
+       let dayRemaining =  Math.round(moment.duration( date1 - date2 ).asDays())
+
+       if(dayRemaining < 0){
+        return   365 + dayRemaining
+
+       }else{
+           return dayRemaining
+       }
   
-       return    Math.round(moment.duration( date1 - date2 ).asDays())
+   
   
     }
 
