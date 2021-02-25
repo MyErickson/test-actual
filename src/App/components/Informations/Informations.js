@@ -11,8 +11,12 @@ class Information extends Component {
         firstName:"",
         birthdayState:"",
         lastName:"",
-        message:false
+        message:false,
+        id:''
     }
+
+   
+
 
     //function qui est appelée a chaque changment d'un input. Il change les valeur du state
     handleChangeState=(event)=>{
@@ -26,13 +30,14 @@ class Information extends Component {
 
     //function qui est appelée apres chaque touch du keybord
     handleSubmit=(event)=>{
-       const { information_Action } = this.props
-       const { firstName ,lastName , birthdayState , id } = this.state
+       const { information_Action  } = this.props
+       const { firstName ,lastName , birthdayState  } = this.state
+       const { first_name , last_name , birthday ="1993-03-07" , id } = this.props.info_User
 
        const data = {}
-       data.first_name = firstName
-       data.last_name = lastName
-       data.birthday = birthdayState
+       data.first_name = firstName ? firstName : first_name
+       data.last_name = lastName ? lastName : last_name
+       data.birthday = birthdayState ? birthdayState : birthday
        data.id = id
 
        // si l'utilsateur press la touche "enter"
